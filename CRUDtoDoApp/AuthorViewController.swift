@@ -24,6 +24,10 @@ class AuthorViewController: UIViewController {
         maTacGia.text = maTG
         fetchData()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let bookOfAuthorVC = segue.destination as! BooksOfAuthorViewController
+        bookOfAuthorVC.author = maTG
+    }
     
     func fetchData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

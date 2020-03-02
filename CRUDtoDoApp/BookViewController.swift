@@ -32,8 +32,8 @@ class BookViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let bookVC = segue.destination as! AuthorViewController
-        bookVC.maTG = maTacGia.text!
+        let authorVC = segue.destination as! AuthorViewController
+        authorVC.maTG = maTacGia.text!
     }
     
     func fetchData() {
