@@ -17,7 +17,8 @@ class BooksOfAuthorViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "Sách của \(author)"
+        fetchData()
         
     }
 
