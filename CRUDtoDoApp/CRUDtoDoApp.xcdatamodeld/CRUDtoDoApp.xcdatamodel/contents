@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ChiTietPhieuMuon" representedClassName="ChiTietPhieuMuon" syncable="YES" codeGenerationType="class">
+        <attribute name="maSach" optional="YES" attributeType="String"/>
+        <attribute name="ngayTra" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="soPhieu" optional="YES" attributeType="String"/>
+        <relationship name="danhMucPM" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhieuMuon" inverseName="phieuMuons" inverseEntity="PhieuMuon"/>
+        <relationship name="sach" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sach" inverseName="chiTietPhieuMuon" inverseEntity="Sach"/>
+    </entity>
+    <entity name="PhieuMuon" representedClassName="PhieuMuon" syncable="YES" codeGenerationType="class">
+        <attribute name="ngayMuon" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="soPhieu" optional="YES" attributeType="String"/>
+        <relationship name="phieuMuons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChiTietPhieuMuon" inverseName="danhMucPM" inverseEntity="ChiTietPhieuMuon"/>
+    </entity>
+    <entity name="Sach" representedClassName="Sach" syncable="YES" codeGenerationType="class">
+        <attribute name="loaiSach" optional="YES" attributeType="String"/>
+        <attribute name="maSach" optional="YES" attributeType="String"/>
+        <attribute name="maTacGia" optional="YES" attributeType="String"/>
+        <attribute name="namXuatBan" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="tenSach" optional="YES" attributeType="String"/>
+        <relationship name="chiTietPhieuMuon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChiTietPhieuMuon" inverseName="sach" inverseEntity="ChiTietPhieuMuon"/>
+        <relationship name="tacGia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TacGia" inverseName="sachs" inverseEntity="TacGia"/>
+    </entity>
+    <entity name="TacGia" representedClassName="TacGia" syncable="YES" codeGenerationType="class">
+        <attribute name="maTacGia" optional="YES" attributeType="String"/>
+        <attribute name="queQuan" optional="YES" attributeType="String"/>
+        <attribute name="tenTacGia" optional="YES" attributeType="String"/>
+        <relationship name="sachs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sach" inverseName="tacGia" inverseEntity="Sach"/>
+    </entity>
+    <elements>
+        <element name="TacGia" positionX="-235.9375" positionY="34.6640625" width="128" height="103"/>
+        <element name="Sach" positionX="-49.2109375" positionY="31.8359375" width="128" height="148"/>
+        <element name="ChiTietPhieuMuon" positionX="142.5078125" positionY="39.65234375" width="128" height="118"/>
+        <element name="PhieuMuon" positionX="143.328125" positionY="222.95703125" width="128" height="88"/>
+    </elements>
+</model>
