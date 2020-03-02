@@ -13,7 +13,7 @@ class CategoryDetailViewController: UIViewController {
 
     var categoryDetails: [NSManagedObject] = []
     var soPhieu = ""
-    var indexPM = 0
+    
     
     @IBOutlet weak var txtSoPhieu: UILabel!
     @IBOutlet weak var txtMaSach: UILabel!
@@ -27,6 +27,10 @@ class CategoryDetailViewController: UIViewController {
         txtSoPhieu.text = soPhieu
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let bookVC = segue.destination as! BookViewController
+        bookVC.maSach = txtMaSach.text!
+    }
     
     
     func fetchData() {
@@ -52,6 +56,9 @@ class CategoryDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     @IBAction func maSachAction(_ sender: Any) {
     }
     
@@ -78,7 +85,10 @@ class CategoryDetailViewController: UIViewController {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-        navigationController?.popViewController(animated: true)
+        
+        txtMaSach.text = maSach
+        txtNgayTra.text = ngayTra
+        
     }
     
 

@@ -140,6 +140,6 @@ extension CategoriesViewController: UITableViewDelegate {
         let category = categories[selectedRowIndex!.row]
         
         detailVC.soPhieu = category.value(forKeyPath: "soPhieu") as! String
-        detailVC.indexPM = selectedRowIndex!.row
+        
     }
 }
