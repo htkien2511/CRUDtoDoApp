@@ -131,4 +131,15 @@ extension CategoriesViewController: UITableViewDelegate {
         self.categories.remove(at: indexPath.row)
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? CategoryDetailViewController else {
+            return
+        }
+        let selectedRowIndex = self.tableView.indexPathForSelectedRow
+        let category = categories[selectedRowIndex!.row]
+        
+        detailVC.soPhieu = category.value(forKeyPath: "soPhieu") as! String
+        detailVC.indexPM = selectedRowIndex!.row
+    }
 }

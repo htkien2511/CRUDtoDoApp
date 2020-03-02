@@ -12,30 +12,41 @@ import CoreData
 class CategoryDetailViewController: UIViewController {
 
     var categoryDetails: [NSManagedObject] = []
+    var soPhieu = ""
+    var indexPM = 0
     
     @IBOutlet weak var txtSoPhieu: UILabel!
     @IBOutlet weak var txtMaSach: UILabel!
     @IBOutlet weak var txtNgayTra: UILabel!
-    @IBOutlet weak var txtSoPhieuMoi: UITextField!
+
     @IBOutlet weak var txtMaSachMoi: UITextField!
     @IBOutlet weak var txtNgayTraMoi: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        
+        txtSoPhieu.text = soPhieu
     }
+    
+    
     
     func fetchData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        
+
         let managedContext = appDelegate.persistentContainer.viewContext
-        
+
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ChiTietPhieuMuon")
-        
+
         do {
             categoryDetails = try managedContext.fetch(fetchRequest)
+            for item in categoryDetails {
+                if item.value(forKeyPath: "soPhieu") as! String == soPhieu {
+                    txtMaSach.text = item.value(forKeyPath: "maSach") as? String
+                    txtNgayTra.text = item.value(forKeyPath: "ngayTra") as? String
+                }
+            }
+            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -53,7 +64,7 @@ class CategoryDetailViewController: UIViewController {
         let entity = NSEntityDescription.entity(forEntityName: "ChiTietPhieuMuon", in: managedContext)!
         let categoryDetail = NSManagedObject(entity: entity, insertInto: managedContext)
         
-        guard let soPhieu = txtSoPhieuMoi.text, let maSach = txtMaSachMoi.text, let ngayTra = txtNgayTraMoi.text else {
+        guard let maSach = txtMaSachMoi.text, let ngayTra = txtNgayTraMoi.text else {
             return
         }
         
@@ -67,15 +78,8 @@ class CategoryDetailViewController: UIViewController {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+        print(categoryDetails)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
