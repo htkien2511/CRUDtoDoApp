@@ -13,13 +13,32 @@ class CategoryDetailViewController: UIViewController {
 
     var categoryDetails: [NSManagedObject] = []
     
-    @IBOutlet weak var txtSoPhieu: UITextField!
-    @IBOutlet weak var txtMaSach: UITextField!
-    @IBOutlet weak var txtNgayTra: UITextField!
+    @IBOutlet weak var txtSoPhieu: UILabel!
+    @IBOutlet weak var txtMaSach: UILabel!
+    @IBOutlet weak var txtNgayTra: UILabel!
+    @IBOutlet weak var txtSoPhieuMoi: UITextField!
+    @IBOutlet weak var txtMaSachMoi: UITextField!
+    @IBOutlet weak var txtNgayTraMoi: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        fetchData()
+        
+    }
+    
+    func fetchData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ChiTietPhieuMuon")
+        
+        do {
+            categoryDetails = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     @IBAction func maSachAction(_ sender: Any) {
@@ -34,7 +53,7 @@ class CategoryDetailViewController: UIViewController {
         let entity = NSEntityDescription.entity(forEntityName: "ChiTietPhieuMuon", in: managedContext)!
         let categoryDetail = NSManagedObject(entity: entity, insertInto: managedContext)
         
-        guard let soPhieu = txtSoPhieu.text, let maSach = txtMaSach.text, let ngayTra = txtNgayTra.text else {
+        guard let soPhieu = txtSoPhieuMoi.text, let maSach = txtMaSachMoi.text, let ngayTra = txtNgayTraMoi.text else {
             return
         }
         
