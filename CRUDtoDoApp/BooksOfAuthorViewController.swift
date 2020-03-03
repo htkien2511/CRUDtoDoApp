@@ -15,12 +15,19 @@ class BooksOfAuthorViewController: UITableViewController {
     var author = ""
     var booksOfAuthor: [String] = []
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sách của \(author)"
         fetchData()
         
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let bookVC = segue.destination as! BookViewController
+//        bookVC.maSach =
+//    }
 
     func fetchData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
