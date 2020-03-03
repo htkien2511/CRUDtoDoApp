@@ -21,6 +21,7 @@ class AuthorViewController: UIViewController {
     @IBOutlet weak var txtQueQuan: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Thông tin tác giả"
         maTacGia.text = maTG
         fetchData()
     }

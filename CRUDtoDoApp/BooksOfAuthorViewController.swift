@@ -14,7 +14,10 @@ class BooksOfAuthorViewController: UITableViewController {
     var books: [NSManagedObject] = []
     var author = ""
     var booksOfAuthor: [String] = []
+    var codeOfBooks: [String] = []
     
+    
+    @IBOutlet weak var bookList: UITableView!
     
     
     override func viewDidLoad() {
@@ -24,10 +27,11 @@ class BooksOfAuthorViewController: UITableViewController {
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let bookVC = segue.destination as! BookViewController
-//        bookVC.maSach =
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let bookVC = segue.destination as! BookViewController
+        let selectedRowIndex = bookList.indexPathForSelectedRow
+        bookVC.maSach = codeOfBooks[selectedRowIndex!.row]
+    }
 
     func fetchData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -41,7 +45,9 @@ class BooksOfAuthorViewController: UITableViewController {
             for item in books {
                 if item.value(forKeyPath: "maTacGia") as! String == author {
                     let tenSach = item.value(forKey: "tenSach") as! String
+                    let maSach = item.value(forKeyPath: "maSach") as! String
                     booksOfAuthor.append(tenSach)
+                    codeOfBooks.append(maSach)
                 }
             }
         } catch let error as NSError {

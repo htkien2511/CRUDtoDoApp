@@ -23,6 +23,7 @@ class CategoryDetailViewController: UIViewController {
     @IBOutlet weak var txtNgayTraMoi: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Chi tiết phiếu mượn"
         fetchData()
         txtSoPhieu.text = soPhieu
     }

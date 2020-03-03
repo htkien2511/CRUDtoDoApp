@@ -487,15 +487,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="books" id="cJr-6D-vyQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="books" id="cJr-6D-vyQ">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cJr-6D-vyQ" id="Aax-x3-7qQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="PRC-qX-5z3" kind="show" id="AXl-cC-HSy"/>
+                                    <segue destination="PRC-qX-5z3" kind="push" id="3Tf-Lt-3w3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -505,6 +505,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="DGJ-ct-rMe"/>
+                    <connections>
+                        <outlet property="bookList" destination="vhu-YL-YSv" id="dH2-kM-BqF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXG-oD-kOe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -530,6 +533,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AXl-cC-HSy"/>
+        <segue reference="3Tf-Lt-3w3"/>
     </inferredMetricsTieBreakers>
 </document>
