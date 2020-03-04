@@ -13,24 +13,34 @@ class CategoryDetailViewController: UIViewController {
 
     var categoryDetails: [NSManagedObject] = []
     var soPhieu = ""
+    var nguoiMuon = ""
     
     
     @IBOutlet weak var txtSoPhieu: UILabel!
     @IBOutlet weak var txtMaSach: UILabel!
     @IBOutlet weak var txtNgayTra: UILabel!
-
+    @IBOutlet weak var txtNguoiMuon: UILabel!
+    
     @IBOutlet weak var txtMaSachMoi: UITextField!
     @IBOutlet weak var txtNgayTraMoi: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Chi tiết phiếu mượn"
         fetchData()
         txtSoPhieu.text = soPhieu
+        txtNguoiMuon.text = nguoiMuon
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let bookVC = segue.destination as! BookViewController
-        bookVC.maSach = txtMaSach.text!
+        let vc = segue.destination
+        if vc is BookViewController {
+            let bookVC = vc as! BookViewController
+            bookVC.maSach = txtMaSach.text!
+        } else if vc is PersonViewController {
+            let peopleVC = vc as! PersonViewController
+            peopleVC.nguoiMuon = txtNguoiMuon.text!
+        }
     }
     
     
@@ -79,6 +89,7 @@ class CategoryDetailViewController: UIViewController {
         categoryDetail.setValue(soPhieu, forKeyPath: "soPhieu")
         categoryDetail.setValue(maSach, forKeyPath: "maSach")
         categoryDetail.setValue(ngayTra, forKeyPath: "ngayTra")
+        
         
         do {
             try managedContext.save()

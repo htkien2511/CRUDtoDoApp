@@ -52,17 +52,20 @@ class CategoriesViewController: UIViewController {
           [unowned self] action in
                                         
           guard let textField = alert.textFields?.first,
-            let nameToSave = textField.text else {
+            let nameToSave = textField.text,
+            let personField = alert.textFields?.last,
+            let personToSave = personField.text else {
               return
           }
           
-          self.save(soPhieu: nameToSave)
+          self.save(soPhieu: nameToSave, nguoiMuon: personToSave)
           self.tableView.reloadData()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
                                          style: .cancel)
         
+        alert.addTextField()
         alert.addTextField()
         
         alert.addAction(saveAction)
@@ -71,7 +74,7 @@ class CategoriesViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func save(soPhieu: String) {
+    func save(soPhieu: String, nguoiMuon: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -80,6 +83,7 @@ class CategoriesViewController: UIViewController {
         let entity = NSEntityDescription.entity(forEntityName: "PhieuMuon", in: managedContext)!
         let category = NSManagedObject(entity: entity, insertInto: managedContext)
         category.setValue(soPhieu, forKeyPath: "soPhieu")
+        category.setValue(nguoiMuon, forKeyPath: "nguoiMuon")
         
         do {
             try managedContext.save()
@@ -102,7 +106,9 @@ extension CategoriesViewController: UITableViewDataSource {
         let category = categories[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        //let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "Cell")
         cell.textLabel?.text = category.value(forKeyPath: "soPhieu") as? String
+        cell.detailTextLabel?.text = category.value(forKeyPath: "nguoiMuon") as? String
         return cell
     }
     
@@ -140,6 +146,7 @@ extension CategoriesViewController: UITableViewDelegate {
         let category = categories[selectedRowIndex!.row]
         
         detailVC.soPhieu = category.value(forKeyPath: "soPhieu") as! String
+        detailVC.nguoiMuon = category.value(forKeyPath: "nguoiMuon") as! String
         
     }
 }

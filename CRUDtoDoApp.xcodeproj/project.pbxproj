@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B0CE4BE240F74C600241C4E /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0CE4BD240F74C600241C4E /* PersonViewController.swift */; };
 		7BC36726240B6A930056FBE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC36725240B6A930056FBE6 /* AppDelegate.swift */; };
 		7BC36728240B6A930056FBE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC36727240B6A930056FBE6 /* SceneDelegate.swift */; };
 		7BC3672A240B6A930056FBE6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC36729240B6A930056FBE6 /* CategoriesViewController.swift */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B0CE4BC240F692C00241C4E /* CRUDtoDoApp v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CRUDtoDoApp v2.xcdatamodel"; sourceTree = "<group>"; };
+		7B0CE4BD240F74C600241C4E /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		7BC36722240B6A930056FBE6 /* CRUDtoDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CRUDtoDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BC36725240B6A930056FBE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BC36727240B6A930056FBE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 				7BC86570240D49D2002E0D6E /* BookViewController.swift */,
 				7BC86572240D5656002E0D6E /* AuthorViewController.swift */,
 				7BC86574240D592A002E0D6E /* BooksOfAuthorViewController.swift */,
+				7B0CE4BD240F74C600241C4E /* PersonViewController.swift */,
 				7BC36729240B6A930056FBE6 /* CategoriesViewController.swift */,
 				7BC3672B240B6A930056FBE6 /* Main.storyboard */,
 				7BC36731240B6A940056FBE6 /* Assets.xcassets */,
@@ -160,6 +164,7 @@
 				7BC86571240D49D2002E0D6E /* BookViewController.swift in Sources */,
 				7BC86573240D5656002E0D6E /* AuthorViewController.swift in Sources */,
 				7BC36728240B6A930056FBE6 /* SceneDelegate.swift in Sources */,
+				7B0CE4BE240F74C600241C4E /* PersonViewController.swift in Sources */,
 				7BC3673D240BB3430056FBE6 /* CategoryDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,9 +366,10 @@
 		7BC3672E240B6A930056FBE6 /* CRUDtoDoApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				7B0CE4BC240F692C00241C4E /* CRUDtoDoApp v2.xcdatamodel */,
 				7BC3672F240B6A930056FBE6 /* CRUDtoDoApp.xcdatamodel */,
 			);
-			currentVersion = 7BC3672F240B6A930056FBE6 /* CRUDtoDoApp.xcdatamodel */;
+			currentVersion = 7B0CE4BC240F692C00241C4E /* CRUDtoDoApp v2.xcdatamodel */;
 			path = CRUDtoDoApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
