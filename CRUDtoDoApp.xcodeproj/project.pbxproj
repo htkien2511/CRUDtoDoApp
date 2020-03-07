@@ -19,6 +19,8 @@
 		7BC86571240D49D2002E0D6E /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC86570240D49D2002E0D6E /* BookViewController.swift */; };
 		7BC86573240D5656002E0D6E /* AuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC86572240D5656002E0D6E /* AuthorViewController.swift */; };
 		7BC86575240D592A002E0D6E /* BooksOfAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC86574240D592A002E0D6E /* BooksOfAuthorViewController.swift */; };
+		7BC985102412052800969862 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9850E2412052800969862 /* CategoryTableViewCell.swift */; };
+		7BC985112412052800969862 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC9850F2412052800969862 /* CategoryTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		7BC86570240D49D2002E0D6E /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		7BC86572240D5656002E0D6E /* AuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewController.swift; sourceTree = "<group>"; };
 		7BC86574240D592A002E0D6E /* BooksOfAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksOfAuthorViewController.swift; sourceTree = "<group>"; };
+		7BC9850E2412052800969862 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		7BC9850F2412052800969862 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				7BC86574240D592A002E0D6E /* BooksOfAuthorViewController.swift */,
 				7B0CE4BD240F74C600241C4E /* PersonViewController.swift */,
 				7BC36729240B6A930056FBE6 /* CategoriesViewController.swift */,
+				7BC9850E2412052800969862 /* CategoryTableViewCell.swift */,
+				7BC9850F2412052800969862 /* CategoryTableViewCell.xib */,
 				7BC3672B240B6A930056FBE6 /* Main.storyboard */,
 				7BC36731240B6A940056FBE6 /* Assets.xcassets */,
 				7BC36733240B6A940056FBE6 /* LaunchScreen.storyboard */,
@@ -147,6 +153,7 @@
 				7BC36735240B6A940056FBE6 /* LaunchScreen.storyboard in Resources */,
 				7BC36732240B6A940056FBE6 /* Assets.xcassets in Resources */,
 				7BC3672D240B6A930056FBE6 /* Main.storyboard in Resources */,
+				7BC985112412052800969862 /* CategoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +169,7 @@
 				7BC36726240B6A930056FBE6 /* AppDelegate.swift in Sources */,
 				7BC86575240D592A002E0D6E /* BooksOfAuthorViewController.swift in Sources */,
 				7BC86571240D49D2002E0D6E /* BookViewController.swift in Sources */,
+				7BC985102412052800969862 /* CategoryTableViewCell.swift in Sources */,
 				7BC86573240D5656002E0D6E /* AuthorViewController.swift in Sources */,
 				7BC36728240B6A930056FBE6 /* SceneDelegate.swift in Sources */,
 				7B0CE4BE240F74C600241C4E /* PersonViewController.swift in Sources */,

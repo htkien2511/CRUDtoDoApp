@@ -61,6 +61,8 @@ class BookViewController: UIViewController {
     
     @IBAction func cancel(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+        //dismiss(animated: true, completion: nil)
+        //presentingViewController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func tacGia(_ sender: Any) {
     }
