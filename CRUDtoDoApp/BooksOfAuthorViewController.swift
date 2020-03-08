@@ -66,13 +66,20 @@ class BooksOfAuthorViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "books", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bookcell", for: indexPath) as! BookCell
 
-        cell.textLabel?.text = booksOfAuthor[indexPath.row]
+        cell.tenSach.text = booksOfAuthor[indexPath.row]
+        cell.maSach.text = codeOfBooks[indexPath.row]
+        cell.delegate = self
+        cell.indexPath = indexPath
 
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -119,4 +126,53 @@ class BooksOfAuthorViewController: UITableViewController {
     }
     */
 
+}
+
+// MARK: - DeleteBook
+extension BooksOfAuthorViewController: DeleteBook {
+    func deleteBook(indexPath: IndexPath) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete(books[indexPath.row])
+        
+        
+        
+        do {
+            try managedContext.save()
+            bookList.reloadData()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+        self.books.remove(at: indexPath.row)
+        self.booksOfAuthor.remove(at: indexPath.row)
+        self.codeOfBooks.remove(at: indexPath.row)
+        self.bookList.deleteRows(at: [indexPath], with: .automatic)
+        
+    }
+}
+
+
+
+
+
+// MARK: - BookCell
+protocol DeleteBook {
+    func deleteBook(indexPath: IndexPath)
+}
+
+class BookCell: UITableViewCell {
+    
+    var delegate: DeleteBook?
+    var indexPath: IndexPath?
+    
+    @IBOutlet weak var tenSach: UILabel!
+    @IBOutlet weak var maSach: UILabel!
+   
+    @IBAction func deleteBook(_ sender: Any) {
+        delegate?.deleteBook(indexPath: indexPath!)
+    }
 }
