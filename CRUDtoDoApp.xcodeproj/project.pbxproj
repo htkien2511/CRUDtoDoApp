@@ -21,6 +21,8 @@
 		7BC86575240D592A002E0D6E /* BooksOfAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC86574240D592A002E0D6E /* BooksOfAuthorViewController.swift */; };
 		7BC985102412052800969862 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9850E2412052800969862 /* CategoryTableViewCell.swift */; };
 		7BC985112412052800969862 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC9850F2412052800969862 /* CategoryTableViewCell.xib */; };
+		7BD3F8572424B41B00D83C72 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD3F8562424B41B00D83C72 /* Category.swift */; };
+		7BD3F85A2424B82800D83C72 /* CategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD3F8592424B82800D83C72 /* CategoryGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,13 +36,16 @@
 		7BC3672F240B6A930056FBE6 /* CRUDtoDoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CRUDtoDoApp.xcdatamodel; sourceTree = "<group>"; };
 		7BC36731240B6A940056FBE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BC36734240B6A940056FBE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7BC36736240B6A940056FBE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BC36736240B6A940056FBE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = CRUDtoDoApp/Resources/Info.plist; sourceTree = SOURCE_ROOT; };
 		7BC3673C240BB3430056FBE6 /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		7BC86570240D49D2002E0D6E /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		7BC86572240D5656002E0D6E /* AuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewController.swift; sourceTree = "<group>"; };
 		7BC86574240D592A002E0D6E /* BooksOfAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksOfAuthorViewController.swift; sourceTree = "<group>"; };
 		7BC9850E2412052800969862 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		7BC9850F2412052800969862 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
+		7BD3F8562424B41B00D83C72 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		7BD3F8582424B54400D83C72 /* CRUDtoDoApp v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CRUDtoDoApp v3.xcdatamodel"; sourceTree = "<group>"; };
+		7BD3F8592424B82800D83C72 /* CategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,23 +78,73 @@
 		7BC36724240B6A930056FBE6 /* CRUDtoDoApp */ = {
 			isa = PBXGroup;
 			children = (
-				7BC36725240B6A930056FBE6 /* AppDelegate.swift */,
-				7BC36727240B6A930056FBE6 /* SceneDelegate.swift */,
-				7BC3673C240BB3430056FBE6 /* CategoryDetailViewController.swift */,
-				7BC86570240D49D2002E0D6E /* BookViewController.swift */,
-				7BC86572240D5656002E0D6E /* AuthorViewController.swift */,
-				7BC86574240D592A002E0D6E /* BooksOfAuthorViewController.swift */,
-				7B0CE4BD240F74C600241C4E /* PersonViewController.swift */,
-				7BC36729240B6A930056FBE6 /* CategoriesViewController.swift */,
+				7BD3F8522424AA4800D83C72 /* AppDelegate */,
+				7BD3F8532424AA4E00D83C72 /* Controllers */,
+				7BD3F8502424AA3400D83C72 /* Models */,
+				7BD3F8542424AA5600D83C72 /* Resources */,
+				7BD3F8552424AE8C00D83C72 /* Views */,
+			);
+			path = CRUDtoDoApp;
+			sourceTree = "<group>";
+		};
+		7BD3F8502424AA3400D83C72 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7BD3F8562424B41B00D83C72 /* Category.swift */,
+				7BD3F8592424B82800D83C72 /* CategoryGroup.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7BD3F8512424AA3C00D83C72 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				7BC9850E2412052800969862 /* CategoryTableViewCell.swift */,
 				7BC9850F2412052800969862 /* CategoryTableViewCell.xib */,
-				7BC3672B240B6A930056FBE6 /* Main.storyboard */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7BD3F8522424AA4800D83C72 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				7BC36725240B6A930056FBE6 /* AppDelegate.swift */,
+				7BC36727240B6A930056FBE6 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		7BD3F8532424AA4E00D83C72 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7BC36729240B6A930056FBE6 /* CategoriesViewController.swift */,
+				7B0CE4BD240F74C600241C4E /* PersonViewController.swift */,
+				7BC86574240D592A002E0D6E /* BooksOfAuthorViewController.swift */,
+				7BC86572240D5656002E0D6E /* AuthorViewController.swift */,
+				7BC86570240D49D2002E0D6E /* BookViewController.swift */,
+				7BC3673C240BB3430056FBE6 /* CategoryDetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7BD3F8542424AA5600D83C72 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				7BC36731240B6A940056FBE6 /* Assets.xcassets */,
-				7BC36733240B6A940056FBE6 /* LaunchScreen.storyboard */,
 				7BC36736240B6A940056FBE6 /* Info.plist */,
 				7BC3672E240B6A930056FBE6 /* CRUDtoDoApp.xcdatamodeld */,
 			);
-			path = CRUDtoDoApp;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7BD3F8552424AE8C00D83C72 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7BC3672B240B6A930056FBE6 /* Main.storyboard */,
+				7BC36733240B6A940056FBE6 /* LaunchScreen.storyboard */,
+				7BD3F8512424AA3C00D83C72 /* Cells */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BD3F85A2424B82800D83C72 /* CategoryGroup.swift in Sources */,
 				7BC3672A240B6A930056FBE6 /* CategoriesViewController.swift in Sources */,
 				7BC36730240B6A930056FBE6 /* CRUDtoDoApp.xcdatamodeld in Sources */,
 				7BC36726240B6A930056FBE6 /* AppDelegate.swift in Sources */,
@@ -174,6 +230,7 @@
 				7BC36728240B6A930056FBE6 /* SceneDelegate.swift in Sources */,
 				7B0CE4BE240F74C600241C4E /* PersonViewController.swift in Sources */,
 				7BC3673D240BB3430056FBE6 /* CategoryDetailViewController.swift in Sources */,
+				7BD3F8572424B41B00D83C72 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +375,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CRUDtoDoApp/Info.plist;
+				INFOPLIST_FILE = CRUDtoDoApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,7 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CRUDtoDoApp/Info.plist;
+				INFOPLIST_FILE = CRUDtoDoApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -374,10 +431,11 @@
 		7BC3672E240B6A930056FBE6 /* CRUDtoDoApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				7BD3F8582424B54400D83C72 /* CRUDtoDoApp v3.xcdatamodel */,
 				7B0CE4BC240F692C00241C4E /* CRUDtoDoApp v2.xcdatamodel */,
 				7BC3672F240B6A930056FBE6 /* CRUDtoDoApp.xcdatamodel */,
 			);
-			currentVersion = 7B0CE4BC240F692C00241C4E /* CRUDtoDoApp v2.xcdatamodel */;
+			currentVersion = 7BD3F8582424B54400D83C72 /* CRUDtoDoApp v3.xcdatamodel */;
 			path = CRUDtoDoApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
