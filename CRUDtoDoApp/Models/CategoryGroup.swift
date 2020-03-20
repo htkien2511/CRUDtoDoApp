@@ -10,13 +10,11 @@ import UIKit
 import CoreData
 
 class CategoryGroup {
-    var categories: [Category] = []
+    var categories: [NSManagedObject] = []
     
-    func fetch() -> [NSManagedObject] {
-        var phieuMuon: [NSManagedObject] = []
-        
+    func fetchData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return phieuMuon
+            return
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -24,14 +22,51 @@ class CategoryGroup {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "PhieuMuon")
         
         do {
-            phieuMuon = try managedContext.fetch(fetchRequest)
+            categories = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        return phieuMuon
     }
     
-    func save() {
+    func save(soPhieu: String, nguoiMuon: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "PhieuMuon", in: managedContext)!
+        let category = NSManagedObject(entity: entity, insertInto: managedContext)
+        category.setValue(soPhieu, forKeyPath: "soPhieu")
+        category.setValue(nguoiMuon, forKeyPath: "nguoiMuon")
+        
+        do {
+            try managedContext.save()
+            categories.append(category)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func deleteCategory(index: IndexPath) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete(categories[index.row])
+        
+        
+        
+        do {
+            try managedContext.save()
+            
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+        
         
     }
+    
+    
 }

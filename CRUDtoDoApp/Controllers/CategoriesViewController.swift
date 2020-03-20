@@ -11,9 +11,14 @@ import CoreData
 
 class CategoriesViewController: UIViewController {
     
+    // MARK: - Properties
+    var categoryGroup = CategoryGroup()
     var categories: [NSManagedObject] = []
     
+    // MARK: - Outlet
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableViewCells()
@@ -23,23 +28,22 @@ class CategoriesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchData()
+        categoryGroup.fetchData()
+        categories = categoryGroup.categories
+        
     }
     
-    func fetchData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+    // MARK: - Action
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? CategoryDetailViewController else {
             return
         }
+        let selectedRowIndex = self.tableView.indexPathForSelectedRow
+        let category = categories[selectedRowIndex!.row]
         
-        let managedContext = appDelegate.persistentContainer.viewContext
+        detailVC.soPhieu = category.value(forKeyPath: "soPhieu") as! String
+        detailVC.nguoiMuon = category.value(forKeyPath: "nguoiMuon") as! String
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "PhieuMuon")
-        
-        do {
-            categories = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
     }
     
     @IBAction func addCategory(_ sender: Any) {
@@ -58,7 +62,9 @@ class CategoriesViewController: UIViewController {
                                                 return
                                         }
                                         
-                                        self.save(soPhieu: nameToSave, nguoiMuon: personToSave)
+                                        
+                                        self.categoryGroup.save(soPhieu: nameToSave, nguoiMuon: personToSave)
+                                        self.categories = self.categoryGroup.categories
                                         self.tableView.reloadData()
         }
         
@@ -74,24 +80,6 @@ class CategoriesViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func save(soPhieu: String, nguoiMuon: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "PhieuMuon", in: managedContext)!
-        let category = NSManagedObject(entity: entity, insertInto: managedContext)
-        category.setValue(soPhieu, forKeyPath: "soPhieu")
-        category.setValue(nguoiMuon, forKeyPath: "nguoiMuon")
-        
-        do {
-            try managedContext.save()
-            categories.append(category)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
     
     func registerTableViewCells() {
         let textFieldCell = UINib(nibName: "CategoryTableViewCell", bundle: nil)
@@ -100,7 +88,7 @@ class CategoriesViewController: UIViewController {
     
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - Table View Data Source
 extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
@@ -130,7 +118,7 @@ extension CategoriesViewController: UITableViewDataSource {
     
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - Table View Delegate
 extension CategoriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -138,53 +126,30 @@ extension CategoriesViewController: UITableViewDelegate {
         
         let selectedRowIndex = self.tableView.indexPathForSelectedRow
         let category = categories[selectedRowIndex!.row]
-
+        
         detailVC.soPhieu = category.value(forKeyPath: "soPhieu") as! String
         if category.value(forKeyPath: "nguoiMuon") != nil {
             detailVC.nguoiMuon = category.value(forKeyPath: "nguoiMuon") as! String
         }
         
         
-        
+        tableView.deselectRow(at: indexPath, animated: true)
         //self.present(detailVC, animated: true, completion: nil)
         navigationController?.pushViewController(detailVC, animated: true)
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailVC = segue.destination as? CategoryDetailViewController else {
-            return
-        }
-        let selectedRowIndex = self.tableView.indexPathForSelectedRow
-        let category = categories[selectedRowIndex!.row]
-
-        detailVC.soPhieu = category.value(forKeyPath: "soPhieu") as! String
-        detailVC.nguoiMuon = category.value(forKeyPath: "nguoiMuon") as! String
-
-    }
+    
 }
 
 // MARK: - Delete 1 category
 extension CategoriesViewController: DeleteCategory {
     func deleteCategory(index: IndexPath) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        managedContext.delete(categories[index.row])
-        
-        
-        
-        do {
-            try managedContext.save()
-            tableView.reloadData()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-        
+        categoryGroup.deleteCategory(index: index)
+        categories = categoryGroup.categories
         self.categories.remove(at: index.row)
         self.tableView.deleteRows(at: [index], with: .automatic)
+        
     }
     
     
